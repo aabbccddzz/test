@@ -1,0 +1,64 @@
+1. for of循环
+
+for (var value of myArray) {
+  console.log(value);
+}
+是的，与之前的内建方法相比，这种循环方式看起来是否有些眼熟？那好，我们将要探究一下for-of循环的外表下隐藏着哪些强大的功能。现在，只需记住：
+
+这是最简洁、最直接的遍历数组元素的语法
+这个方法避开了for-in循环的所有缺陷
+与forEach()不同的是，它可以正确响应break、continue和return语句
+for-in循环用来遍历对象属性。
+
+for-of循环用来遍历数据—例如数组中的值。
+
+但是，不仅如此！
+
+for-of循环也可以遍历其它的集合
+
+for-of循环不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象。
+
+for-of循环也支持字符串遍历，它将字符串视为一系列的Unicode字符来进行遍历：
+
+
+for (var chr of "") {
+  alert(chr);
+}
+
+
+2.arrow function
+　　这个恐怕是ES6最最常用的一个新特性了，用它来写function比原来的写法要简洁清晰很多:
+1
+function(i){ return i + 1; } //ES5
+2
+(i) => i + 1 //ES6
+
+
+简直是简单的不像话对吧...
+如果方程比较复杂，则需要用{}把代码包起来：
+
+function(x, y) {
+    x++;
+    y--;
+    return x + y;
+}
+(x, y) => {x++; y--; return x+y}
+
+
+
+
+class Animal {
+    constructor(){
+        this.type = 'animal'
+    }
+    says(say){
+        setTimeout( () => {
+            console.log(this.type + ' says ' + say)
+        }, 1000)
+    }
+}
+ var animal = new Animal()
+ animal.says('hi')  //animal says hi
+
+　　当我们使用箭头函数时，函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+　　并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，它的this是继承外面的，因此内部的this就是外层代码块的this。
